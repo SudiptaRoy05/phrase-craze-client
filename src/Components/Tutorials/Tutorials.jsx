@@ -51,7 +51,7 @@ export default function Tutorials() {
           onClick={() => navigate(-1)}
           className="btn bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md transition"
         >
-          Back
+          Learn Vocabularies
         </button>
       </div>
     </div>

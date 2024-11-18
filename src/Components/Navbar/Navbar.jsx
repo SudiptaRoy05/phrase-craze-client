@@ -1,13 +1,20 @@
 import { ImBooks } from "react-icons/im";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export default function Navbar() {
+  useEffect(() => {
+    AOS.init({ duration: 3000 }); 
+  }, []);
+
   const links = (
     <div className="text-xl space-x-5 text-blue-600 hover:text-blue-800">
-      <NavLink to="/" className="hover:underline">Home</NavLink>
-      <NavLink to="/letslearn" className="hover:underline">Start-Learning</NavLink>
-      <NavLink to="/about" className="hover:underline">About Us</NavLink>
-      <NavLink to="/dashboard" className="hover:underline">Dashboard</NavLink>
+      <NavLink to="/" className={({ isActive }) => (isActive ? "underline" : "")}>Home</NavLink>
+      <NavLink to="/letslearn" className={({ isActive }) => (isActive ? "underline" : "")}>Start-Learning</NavLink>
+      <NavLink to="/tutorials" className={({ isActive }) => (isActive ? "underline" : "")}>Tutorials</NavLink>
+      <NavLink to="/myprofile" className={({ isActive }) => (isActive ? "underline" : "")}>My-Profile</NavLink>
     </div>
   );
 
@@ -44,7 +51,7 @@ export default function Navbar() {
             <span className="text-blue-500">
               <ImBooks />
             </span>
-            <span>PhraseCraze</span>
+            <span data-aos="flip-left" className="text-blue-700">PhraseCraze</span>
           </div>
         </div>
 
@@ -63,9 +70,7 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      <div>
-
-      </div>
+      <div></div>
     </div>
   );
 }
