@@ -3,6 +3,7 @@ import Home from '../Components/Home/Home'
 import Letslearn from '../Components/Letslearn/Letslearn'
 import Banner from '../Components/Banner/Banner'
 import Lessonpage from '../Components/Lessonpage/Lessonpage'
+import Tutorials from '../Components/Tutorials/Tutorials'
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
                 path:'/lesson/:lesson_on',
                 element:<Lessonpage></Lessonpage>,
                 loader:()=> fetch('/german_vocabulary.json'),
+            },
+            {
+                path:'/tutorials',
+                element:<Tutorials></Tutorials>,
             }
         ]
     }

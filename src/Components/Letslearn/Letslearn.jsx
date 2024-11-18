@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Letslearn() {
     const navigate = useNavigate();
   return (
-    <div className=" w-10/12 mx-auto bg-gradient-to-b from-blue-100 to-white flex flex-col">
+    <div className=" w-10/12 mx-auto bg-gradient-to-b from-blue-100 to-white flex flex-col my-6">
     {/* Page Title */}
     <div className="bg-blue-500 text-white py-8 text-center">
       <h1 className="text-4xl font-bold">❄️ Learn Vocabulary by Lessons ❄️</h1>
@@ -43,7 +43,7 @@ export default function Letslearn() {
           </div>
           {/* View More Button */}
           <div>
-            <button className="bg-blue-500 text-white px-6 py-3 rounded-md shadow-lg hover:bg-blue-600 transition">
+            <button onClick={()=>navigate('/tutorials')} className="bg-blue-500 text-white px-6 py-3 rounded-md shadow-lg hover:bg-blue-600 transition">
               View More Tutorials
             </button>
           </div>
