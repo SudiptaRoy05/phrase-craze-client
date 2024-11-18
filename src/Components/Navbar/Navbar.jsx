@@ -1,15 +1,20 @@
 import { ImBooks } from "react-icons/im";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 export default function Navbar() {
   const links = (
-    <div className="text-xl">
-      <NavLink to="/">Home</NavLink>
+    <div className="text-xl space-x-5 text-blue-600 hover:text-blue-800">
+      <NavLink to="/" className="hover:underline">Home</NavLink>
+      <NavLink to="/letslearn" className="hover:underline">Start-Learning</NavLink>
+      <NavLink to="/about" className="hover:underline">About Us</NavLink>
+      <NavLink to="/dashboard" className="hover:underline">Dashboard</NavLink>
     </div>
   );
+
   return (
-    <div>
-      <div className="navbar w-11/12 mx-auto">
+    <div className="bg-gradient-to-b from-blue-100 to-white shadow-lg">
+      <div className="navbar w-11/12 mx-auto py-4">
+        {/* Navbar Start */}
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -30,23 +35,36 @@ export default function Navbar() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow-lg flex flex-col"
             >
               {links}
             </ul>
           </div>
-          <div className="flex items-center gap-2 text-2xl font-bold">
-            <span className="text-purple-500"><ImBooks></ImBooks></span>
+          <div className="flex items-center gap-2 text-2xl font-bold text-blue-700">
+            <span className="text-blue-500">
+              <ImBooks />
+            </span>
             <span>PhraseCraze</span>
           </div>
         </div>
+
+        {/* Navbar Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
+
+        {/* Navbar End */}
         <div className="navbar-end gap-2 font-bold">
-          <button>Sign In</button>
-          <button>Sign Up</button>
+          <button className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition">
+            Sign In
+          </button>
+          <button className="px-4 py-2 rounded-md bg-white text-blue-600 border border-blue-500 hover:bg-blue-500 hover:text-white transition">
+            Sign Up
+          </button>
         </div>
+      </div>
+      <div>
+
       </div>
     </div>
   );
