@@ -6,6 +6,9 @@ import Lessonpage from "../Components/Lessonpage/Lessonpage";
 import Tutorials from "../Components/Tutorials/Tutorials";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import AboutUs from "../Components/Aboutus/AboutUs";
+import AuthLayout from "../Components/AuthLayout/AuthLayout";
+import Login from "../Components/AuthLayout/Login/Login";
+import Register from "../Components/AuthLayout/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +42,20 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:'/auth',
+    element:<AuthLayout></AuthLayout>,
+    children:[
+      {
+        path:'/auth/login',
+        element:<Login></Login>,
+      },
+      {
+        path:'/auth/register',
+        element:<Register></Register>,
+      }
+    ]
+  }
 ]);
 
 export default router;
