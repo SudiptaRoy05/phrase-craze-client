@@ -1,7 +1,7 @@
 import bannerImg1 from "../../assets/b1.webp";
 import bannerImg2 from "../../assets/b2.webp";
 import bannerImg3 from "../../assets/b3.webp";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function Banner() {
   const navigate = useNavigate();
@@ -83,6 +83,9 @@ export default function Banner() {
             </a>
           </div>
         </div>
+      </div>
+      <div>
+        <Outlet></Outlet>
       </div>
     </div>
   );

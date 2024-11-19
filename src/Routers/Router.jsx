@@ -5,6 +5,7 @@ import Banner from "../Components/Banner/Banner";
 import Lessonpage from "../Components/Lessonpage/Lessonpage";
 import Tutorials from "../Components/Tutorials/Tutorials";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import AboutUs from "../Components/Aboutus/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,13 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Banner></Banner>,
+        children:[
+          {
+            path:'/',
+            element:<AboutUs></AboutUs>
+          }
+        ]
+
       },
       {
         path: "/letslearn",
