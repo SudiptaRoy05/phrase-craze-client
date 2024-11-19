@@ -9,7 +9,7 @@ export default function Navbar() {
   useEffect(() => {
     AOS.init({ duration: 3000 });
   }, []);
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   console.log(user);
 
   const links = (
@@ -89,7 +89,7 @@ export default function Navbar() {
         <div className="navbar-end gap-2 font-bold">
           {user ? (
             <>
-              <p className="text-blue-600">Welcome to PhraseCraze {user.name}</p> <button className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition">Logout</button>
+              <p className="text-blue-600">Welcome to PhraseCraze {user.name}</p> <button onClick={logOut} className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition">Logout</button>
             </>
           ) : (
             <>
