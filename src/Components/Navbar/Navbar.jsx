@@ -2,19 +2,42 @@ import { ImBooks } from "react-icons/im";
 import { Link, NavLink } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 export default function Navbar() {
   useEffect(() => {
-    AOS.init({ duration: 3000 }); 
+    AOS.init({ duration: 3000 });
   }, []);
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
   const links = (
     <div className="text-xl space-x-5 text-blue-600 hover:text-blue-800">
-      <NavLink to="/" className={({ isActive }) => (isActive ? "underline" : "")}>Home</NavLink>
-      <NavLink to="/letslearn" className={({ isActive }) => (isActive ? "underline" : "")}>Start-Learning</NavLink>
-      <NavLink to="/tutorials" className={({ isActive }) => (isActive ? "underline" : "")}>Tutorials</NavLink>
-      <NavLink to="/myprofile" className={({ isActive }) => (isActive ? "underline" : "")}>My-Profile</NavLink>
+      <NavLink
+        to="/"
+        className={({ isActive }) => (isActive ? "underline" : "")}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/letslearn"
+        className={({ isActive }) => (isActive ? "underline" : "")}
+      >
+        Start-Learning
+      </NavLink>
+      <NavLink
+        to="/tutorials"
+        className={({ isActive }) => (isActive ? "underline" : "")}
+      >
+        Tutorials
+      </NavLink>
+      <NavLink
+        to="/myprofile"
+        className={({ isActive }) => (isActive ? "underline" : "")}
+      >
+        My-Profile
+      </NavLink>
     </div>
   );
 
@@ -51,7 +74,9 @@ export default function Navbar() {
             <span className="text-blue-500">
               <ImBooks />
             </span>
-            <span data-aos="flip-left" className="text-blue-700">PhraseCraze</span>
+            <span data-aos="flip-left" className="text-blue-700">
+              PhraseCraze
+            </span>
           </div>
         </div>
 
@@ -62,15 +87,28 @@ export default function Navbar() {
 
         {/* Navbar End */}
         <div className="navbar-end gap-2 font-bold">
-          <Link to='/auth/login' className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition">
-            Log In
-          </Link>
-          <Link to='/auth/register'  className="px-4 py-2 rounded-md bg-white text-blue-600 border border-blue-500 hover:bg-blue-500 hover:text-white transition">
-            Register
-          </Link>
+          {user ? (
+            <>
+              <p className="text-blue-600">Welcome to PhraseCraze {user.name}</p> <button className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition">Logout</button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/auth/login"
+                className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition"
+              >
+                Log In
+              </Link>
+              <Link
+                to="/auth/register"
+                className="px-4 py-2 rounded-md bg-white text-blue-600 border border-blue-500 hover:bg-blue-500 hover:text-white transition"
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
-
     </div>
   );
 }

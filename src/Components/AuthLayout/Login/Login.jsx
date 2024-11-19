@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Login() {
   return (
     <div className="flex justify-center items-center h-screen bg-blue-100">
@@ -15,6 +17,7 @@ export default function Login() {
             </label>
             <input
               type="email"
+              name="email"
               placeholder="Enter your email"
               className="input input-bordered bg-blue-100 border-blue-300 focus:ring-2 focus:ring-blue-500"
               required
@@ -26,6 +29,7 @@ export default function Login() {
             </label>
             <input
               type="password"
+              name="password"
               placeholder="Enter your password"
               className="input input-bordered bg-blue-100 border-blue-300 focus:ring-2 focus:ring-blue-500"
               required
@@ -39,6 +43,11 @@ export default function Login() {
               </a>
             </label>
           </div>
+          <label className="label mt-1">
+            <p className="label-text-alt text-lg text-blue-500">
+              Dont have an account ? <Link className="link" to="/auth/register">Register</Link>
+            </p>
+          </label>
           <div className="form-control mt-6">
             <button className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg w-full py-3">
               Login
