@@ -10,7 +10,6 @@ export default function Navbar() {
     AOS.init({ duration: 3000 });
   }, []);
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
 
   const links = (
     <div className="text-xl space-x-5 text-blue-600 hover:text-blue-800">
@@ -80,12 +79,12 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Navbar Center */}
+        
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
 
-        {/* Navbar End */}
+        
         <div className="navbar-end gap-2 font-bold">
           {user ? (
             <>

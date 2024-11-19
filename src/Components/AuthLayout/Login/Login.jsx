@@ -1,10 +1,33 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 export default function Login() {
+
+  const {loginUser, setUser} = useContext(AuthContext);
+
+
+
+  const handleLogin=(e)=>{
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const email = form.get('email');
+    const password = form.get('password');
+    
+    loginUser(email,password)
+    .then(result => {
+      const user = result.user;
+      setUser(user);
+    }).catch(error=>{
+      console.log(error.message);
+    })
+
+  }
+
   return (
     <div className="flex justify-center items-center h-screen bg-blue-100">
       <div className="card bg-blue-50 w-full max-w-md shrink-0 shadow-2xl border border-blue-200 rounded-lg p-6">
-        <form className="card-body">
+        <form onSubmit={handleLogin} className="card-body">
           <div className="text-center mb-6">
             <h2 className="text-3xl font-bold text-blue-800">Welcome Back!</h2>
             <p className="text-blue-600 text-base">
