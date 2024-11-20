@@ -1,27 +1,26 @@
-import { useState, useEffect } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import Wordcard from "../Wordcard/Wordcard";
 
 export default function Lessonpage() {
     const { lesson_on } = useParams(); 
     const data = useLoaderData(); 
-
-    // const [word, setWord] = useState([]);
-
-  
-    // useEffect(() => {
-    //     setWord(data);
-    // }, [data]); 
-
     
-    const filterData = data.filter(item => item.lesson_no === parseInt(lesson_on));
-    console.log(Array.isArray(filterData))
-
+    
+    console.log("Lesson No:", lesson_on); // Log lesson_no from URL
+    console.log("Loaded Data:", data); // Log the fetched data
+    
+  
+    const filterData = data.filter(item => item.lesson_no === Number(lesson_on));
+    console.log("Filtered Data:", filterData); 
 
     return (
-        <div className="grid md:grid-cols-4 w-10/12 mx-auto"> 
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 w-10/12 lg:w-11/12 lg:pl-8 mx-auto"> 
             {
-                filterData.map(item => <Wordcard key={item.id} item={item}></Wordcard>)
+                filterData.length > 0 ? (
+                    filterData.map(item => <Wordcard key={item.id} item={item}></Wordcard>)
+                ) : (
+                    <p>No data found for this lesson.</p>
+                )
             }
         </div>
     );

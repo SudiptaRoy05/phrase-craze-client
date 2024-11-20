@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-
+import Snowfall from "react-snowfall";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-blue-100 text-blue-800">
+    <div className="relative min-h-screen flex flex-col bg-blue-100 text-blue-800">
+      <Snowfall color="white" snowflakeCount={400} />
       <nav className="bg-blue-50 shadow-md border-b border-blue-200">
         <Navbar></Navbar>
       </nav>

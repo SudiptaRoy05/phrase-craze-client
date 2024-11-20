@@ -10,6 +10,8 @@ import AuthLayout from "../Components/AuthLayout/AuthLayout";
 import Login from "../Components/AuthLayout/Login/Login";
 import Register from "../Components/AuthLayout/Register/Register";
 import PrivateRoutes from "./PrivateRoutes";
+import MyProfile from "../Components/MyProfile/MyProfile";
+
 
 const router = createBrowserRouter([
   {
@@ -32,9 +34,14 @@ const router = createBrowserRouter([
         element: <Letslearn></Letslearn>,
       },
       {
-        path:"/myprofile",
-        element:<h1>my prop</h1>
+        path: "/myprofile",
+        element: (
+          <PrivateRoutes>
+            <MyProfile></MyProfile>
+          </PrivateRoutes>
+        ),
       },
+
       {
         path: "/lesson/:lesson_on",
         element: (
@@ -48,7 +55,7 @@ const router = createBrowserRouter([
         path: "/tutorials",
         element: (
           <PrivateRoutes>
-            <Tutorials></Tutorials>,
+            <Tutorials></Tutorials>
           </PrivateRoutes>
         ),
       },

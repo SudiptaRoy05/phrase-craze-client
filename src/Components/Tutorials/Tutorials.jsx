@@ -15,30 +15,31 @@ export default function Tutorials() {
     "https://www.youtube.com/embed/KDkQOXcEr4o?si=UabOzoCxGGzjuU9f",
     "https://www.youtube.com/embed/n6db5VSUm2o?si=MSwWa25BXCAF3kgQ",
   ];
-  
 
   return (
-    <div className="py-8 px-4 bg-gradient-to-b from-gray-100 to-gray-300 my-6 w-10/12 mx-auto">
-      <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">
-        Tutorials
+    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 py-10">
+      {/* Page Title */}
+      <h1 className="text-4xl font-extrabold text-center text-blue-700 mb-10">
+        Explore Our Tutorials
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Video Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 lg:px-20">
         {videos.map((video, index) => (
           <div
             key={index}
-            className="bg-white shadow-lg rounded-lg overflow-hidden"
+            className="group bg-white shadow-lg rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300"
           >
             <iframe
-              className="w-full h-48"
+              className="w-full h-56 rounded-t-xl"
               src={video}
               title={`Tutorial ${index + 1}`}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-700">
+            <div className="p-4 bg-gradient-to-r from-blue-100 to-blue-200 group-hover:from-blue-200 group-hover:to-blue-300">
+              <h2 className="text-xl font-semibold text-center text-blue-700">
                 Tutorial {index + 1}
               </h2>
             </div>
@@ -46,10 +47,11 @@ export default function Tutorials() {
         ))}
       </div>
 
-      <div className="mt-8 text-center">
+      {/* Navigation Button */}
+      <div className="mt-10 text-center">
         <button
-          onClick={() => navigate(-1)}
-          className="btn bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md transition"
+          onClick={() => navigate("/start-lesson")}
+          className="bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-lg text-lg font-medium shadow-md hover:shadow-lg transition-all"
         >
           Learn Vocabularies
         </button>
