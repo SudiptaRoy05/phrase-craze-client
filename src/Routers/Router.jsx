@@ -9,6 +9,7 @@ import AboutUs from "../Components/Aboutus/AboutUs";
 import AuthLayout from "../Components/AuthLayout/AuthLayout";
 import Login from "../Components/AuthLayout/Login/Login";
 import Register from "../Components/AuthLayout/Register/Register";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -19,13 +20,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Banner></Banner>,
-        children:[
+        children: [
           {
-            path:'/',
-            element:<AboutUs></AboutUs>
-          }
-        ]
-
+            path: "/",
+            element: <AboutUs></AboutUs>,
+          },
+        ],
       },
       {
         path: "/letslearn",
@@ -33,29 +33,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/lesson/:lesson_on",
-        element: <Lessonpage></Lessonpage>,
+        element: (
+          <PrivateRoutes>
+            <Lessonpage></Lessonpage>
+          </PrivateRoutes>
+        ),
         loader: () => fetch("/german_vocabulary.json"),
       },
       {
         path: "/tutorials",
-        element: <Tutorials></Tutorials>,
+        element: (
+          <PrivateRoutes>
+            <Tutorials></Tutorials>,
+          </PrivateRoutes>
+        ),
       },
     ],
   },
   {
-    path:'/auth',
-    element:<AuthLayout></AuthLayout>,
-    children:[
+    path: "/auth",
+    element: <AuthLayout></AuthLayout>,
+    children: [
       {
-        path:'/auth/login',
-        element:<Login></Login>,
+        path: "/auth/login",
+        element: <Login></Login>,
       },
       {
-        path:'/auth/register',
-        element:<Register></Register>,
-      }
-    ]
-  }
+        path: "/auth/register",
+        element: <Register></Register>,
+      },
+    ],
+  },
 ]);
 
 export default router;

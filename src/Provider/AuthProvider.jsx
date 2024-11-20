@@ -7,6 +7,7 @@ const auth = getAuth(app);
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
 
   const createNewUser = (email, password) => {
@@ -28,12 +29,14 @@ export default function AuthProvider({ children }) {
     createNewUser,
     logOut,
     loginUser,
+    loading,
 
   };
 
   useEffect(()=>{
     const unSub = onAuthStateChanged(auth, currentUser=>{
       setUser(currentUser);
+      setLoading(false);
     })
     return ()=>{
       unSub();
