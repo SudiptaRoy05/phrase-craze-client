@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
-  const { loginUser, setUser } = useContext(AuthContext);
+  const { loginUser, setUser,loginWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState({});
 
   const location = useLocation();
@@ -25,6 +26,19 @@ export default function Login() {
         setError({ ...error, login: error.message });
       });
   };
+
+  const handleSocialLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        setError({ ...error, login: error.message });
+      });
+  };
+
 
   return (
     <div className="flex justify-center items-center h-screen bg-blue-100">
@@ -68,7 +82,7 @@ export default function Login() {
             )}
             <label className="label mt-1">
               <Link
-                to='/auth/forgotpassword'
+                to="/auth/forgotpassword"
                 className="label-text-alt text-blue-500 link link-hover"
               >
                 Forgot password?
@@ -86,6 +100,19 @@ export default function Login() {
           <div className="form-control mt-6">
             <button className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg w-full py-3">
               Login
+            </button>
+          </div>
+          <div className="divider my-6 text-blue-500">OR</div>
+          <div className="form-control">
+            <button
+              className="btn bg-white hover:bg-gray-100 border border-gray-300 flex items-center justify-center rounded-lg w-full py-3"
+              type="button"
+              onClick={handleSocialLogin}
+            >
+              <FcGoogle className="text-2xl mr-2" /> {/* Google icon */}
+              <span className="text-gray-700 font-medium">
+                Continue with Google
+              </span>
             </button>
           </div>
         </form>

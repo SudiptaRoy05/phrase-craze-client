@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Register() {
   const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
@@ -31,13 +32,13 @@ export default function Register() {
         const user = result.user;
         setUser(user);
         alert("User created successfully!");
-        updateUserProfile({ displayName: name, photoURL: imageUrl }).then(
-          (result) => {
+        updateUserProfile({ displayName: name, photoURL: imageUrl })
+          .then((result) => {
             navigate("/");
-          }
-        ).catch(error=>{
-          console.log(error.message)
-        })
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
       })
       .catch((error) => {
         setError({ ...error, form: error.message });
@@ -127,6 +128,18 @@ export default function Register() {
           <div className="form-control mt-6">
             <button className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg w-full py-3">
               Register
+            </button>
+          </div>
+          <div className="divider my-6 text-blue-500">OR</div>
+          <div className="form-control">
+            <button
+              className="btn bg-white hover:bg-gray-100 border border-gray-300 flex items-center justify-center rounded-lg w-full py-3"
+              type="button"
+            >
+              <FcGoogle className="text-2xl mr-2" /> {/* Google icon */}
+              <span className="text-gray-700 font-medium">
+                Continue with Google
+              </span>
             </button>
           </div>
         </form>
