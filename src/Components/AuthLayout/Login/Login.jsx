@@ -1,31 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 export default function Login() {
+  const { loginUser, setUser } = useContext(AuthContext);
+  const [error, setError] = useState({});
 
-  const {loginUser, setUser} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const location =useLocation();
-  const navigate = useNavigate()
-
-
-  const handleLogin=(e)=>{
+  const handleLogin = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    const email = form.get('email');
-    const password = form.get('password');
-    
-    loginUser(email,password)
-    .then(result => {
-      const user = result.user;
-      setUser(user);
-      navigate(location?.state ? location.state : "/");
-    }).catch(error=>{
-      console.log(error.message);
-    })
+    const email = form.get("email");
+    const password = form.get("password");
 
-  }
+    loginUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        setError({ ...error, login: error.message });
+      });
+  };
 
   return (
     <div className="flex justify-center items-center h-screen bg-blue-100">
@@ -60,6 +59,13 @@ export default function Login() {
               className="input input-bordered bg-blue-100 border-blue-300 focus:ring-2 focus:ring-blue-500"
               required
             />
+            {error.login && (
+              <label className="label mt-1">
+                <p className="label-text-alt text-red-500 link link-hover">
+                  {error.login}
+                </p>
+              </label>
+            )}
             <label className="label mt-1">
               <a
                 href="#"
@@ -71,7 +77,10 @@ export default function Login() {
           </div>
           <label className="label mt-1">
             <p className="label-text-alt text-lg text-blue-500">
-              Dont have an account ? <Link className="link" to="/auth/register">Register</Link>
+              Dont have an account ?{" "}
+              <Link className="link" to="/auth/register">
+                Register
+              </Link>
             </p>
           </label>
           <div className="form-control mt-6">

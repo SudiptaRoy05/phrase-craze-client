@@ -1,10 +1,12 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 export default function Register() {
-
-  const {createNewUser, setUser} = useContext(AuthContext);
+  const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const [error, setError] = useState({});
+  const navigate = useNavigate();
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,15 +16,34 @@ export default function Register() {
     const imageUrl = form.get("imageUrl");
     const email = form.get("email");
     const password = form.get("password");
+
+    if (!passwordRegex.test(password)) {
+      setError({
+        ...error,
+        password:
+          "Password must be at least 6 characters long and include both uppercase and lowercase letters.",
+      });
+      return;
+    }
+
     createNewUser(email, password)
-    .then(result => {
-      const user = result.user;
-      setUser(user);
-      alert('user create successfull')
-    }).catch(error=>{
-      console.log(error.message)
-    })
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        alert("User created successfully!");
+        updateUserProfile({ displayName: name, photoURL: imageUrl }).then(
+          (result) => {
+            navigate("/");
+          }
+        ).catch(error=>{
+          console.log(error.message)
+        })
+      })
+      .catch((error) => {
+        setError({ ...error, form: error.message });
+      });
   };
+
   return (
     <div className="flex justify-center items-center h-screen bg-blue-100">
       <div className="card bg-blue-50 w-full max-w-md shrink-0 shadow-2xl border border-blue-200 rounded-lg p-6">
@@ -82,11 +103,22 @@ export default function Register() {
               className="input input-bordered bg-blue-100 border-blue-300 focus:ring-2 focus:ring-blue-500"
               required
             />
+            {error.password && (
+              <label className="label mt-1">
+                <p className="label-text-alt text-red-500">{error.password}</p>
+              </label>
+            )}
           </div>
+
+          {error.form && (
+            <div className="text-center mt-4">
+              <p className="text-red-500">{error.form}</p>
+            </div>
+          )}
 
           <label className="label mt-1">
             <p className="label-text-alt text-lg text-blue-500">
-              Allready have an account ?{" "}
+              Already have an account?{" "}
               <Link className="link" to="/auth/login">
                 Login
               </Link>

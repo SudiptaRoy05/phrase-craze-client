@@ -10,6 +10,7 @@ export default function Navbar() {
     AOS.init({ duration: 3000 });
   }, []);
   const { user, logOut } = useContext(AuthContext);
+  console.log(user)
 
   const links = (
     <div className="text-xl space-x-5 text-blue-600 hover:text-blue-800">
@@ -79,16 +80,23 @@ export default function Navbar() {
           </div>
         </div>
 
-        
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
 
-        
         <div className="navbar-end gap-2 font-bold">
           {user ? (
             <>
-              <p className="text-blue-600">Welcome to PhraseCraze {user.name}</p> <button onClick={logOut} className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition">Logout</button>
+              <p className="text-blue-600">
+                Welcome to PhraseCraze <span className="text-blue-800">{user?.displayName}</span>
+              </p>{" "}
+              <img className="h-[40px] w-[40px] rounded-full border-white" src={user?.photoURL} alt="" />
+              <button
+                onClick={logOut}
+                className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition"
+              >
+                Logout
+              </button>
             </>
           ) : (
             <>

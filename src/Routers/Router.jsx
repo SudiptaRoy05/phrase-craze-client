@@ -32,6 +32,10 @@ const router = createBrowserRouter([
         element: <Letslearn></Letslearn>,
       },
       {
+        path:"/myprofile",
+        element:<h1>my prop</h1>
+      },
+      {
         path: "/lesson/:lesson_on",
         element: (
           <PrivateRoutes>
