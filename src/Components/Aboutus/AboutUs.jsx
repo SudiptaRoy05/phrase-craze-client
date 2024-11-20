@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import image from '../../assets/aboutUs.webp'
 
 export default function AboutUs() {
@@ -28,6 +29,7 @@ export default function AboutUs() {
           />
         </div>
       </section>
+      <Outlet></Outlet>
     </div>
   );
 }

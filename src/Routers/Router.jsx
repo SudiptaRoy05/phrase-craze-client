@@ -13,6 +13,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import MyProfile from "../Components/MyProfile/MyProfile";
 import ProfileUpdate from "../Components/ProfileUpdate/ProfileUpdate";
 import ForgotPassword from "../Components/ForgotPassword/ForgotPassword";
+import Success from "../Components/Success/Success";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,12 @@ const router = createBrowserRouter([
           {
             path: "/",
             element: <AboutUs></AboutUs>,
+            children:[
+              {
+                path:"/",
+                element:<Success></Success>
+              }
+            ]
           },
         ],
       },

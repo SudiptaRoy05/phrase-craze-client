@@ -3,6 +3,7 @@ import bannerImg2 from "../../assets/b2.webp";
 import bannerImg3 from "../../assets/b3.webp";
 import { Outlet, useNavigate } from "react-router-dom";
 
+
 export default function Banner() {
   const navigate = useNavigate();
 

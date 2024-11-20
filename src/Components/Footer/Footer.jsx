@@ -1,14 +1,12 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaFacebook, FaTwitter, FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer className="bg-blue-700 text-white py-6 mt-12">
       <div className="container mx-auto text-center">
-        {/* Footer Title */}
         <h2 className="text-2xl font-semibold mb-4">Stay Connected</h2>
 
-        {/* Social Media Icons */}
         <div className="flex justify-center space-x-6 mb-4">
           <a
             href="https://www.facebook.com"
@@ -52,7 +50,6 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* Important Links */}
         <div className="flex justify-center space-x-8 mb-4">
           <Link
             to="/about-us"
@@ -80,7 +77,6 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* Footer Text */}
         <p className="text-sm text-gray-300">
           &copy; 2024 Your Website. All rights reserved.
         </p>
