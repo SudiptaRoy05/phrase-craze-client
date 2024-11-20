@@ -11,6 +11,8 @@ import Login from "../Components/AuthLayout/Login/Login";
 import Register from "../Components/AuthLayout/Register/Register";
 import PrivateRoutes from "./PrivateRoutes";
 import MyProfile from "../Components/MyProfile/MyProfile";
+import ProfileUpdate from "../Components/ProfileUpdate/ProfileUpdate";
+import ForgotPassword from "../Components/ForgotPassword/ForgotPassword";
 
 
 const router = createBrowserRouter([
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
             <MyProfile></MyProfile>
           </PrivateRoutes>
         ),
+      },
+      {
+        path:'/myprofile/updateprofile',
+        element:<ProfileUpdate></ProfileUpdate>,
       },
 
       {
@@ -73,6 +79,10 @@ const router = createBrowserRouter([
         path: "/auth/register",
         element: <Register></Register>,
       },
+      {
+        path:"/auth/forgotpassword",
+        element:<ForgotPassword></ForgotPassword>
+      }
     ],
   },
 ]);

@@ -67,12 +67,12 @@ export default function Login() {
               </label>
             )}
             <label className="label mt-1">
-              <a
-                href="#"
+              <Link
+                to='/auth/forgotpassword'
                 className="label-text-alt text-blue-500 link link-hover"
               >
                 Forgot password?
-              </a>
+              </Link>
             </label>
           </div>
           <label className="label mt-1">

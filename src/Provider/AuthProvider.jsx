@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase.config";
 
@@ -29,6 +29,10 @@ export default function AuthProvider({ children }) {
     return signOut(auth);
   }
 
+  const handleForgotPassword=(email)=>{
+    return sendPasswordResetEmail(auth, email);
+
+  }
 
   const authInfo = {
     user,
@@ -38,6 +42,7 @@ export default function AuthProvider({ children }) {
     loginUser,
     loading,
     updateUserProfile,
+    handleForgotPassword,
   };
 
   useEffect(()=>{
