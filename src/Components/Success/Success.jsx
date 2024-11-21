@@ -1,21 +1,28 @@
-// import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import CountUp from "react-countup";
-// import { AuthContext } from "../../Provider/AuthProvider";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 export default function Success() {
-  // const {user} = useContext(AuthContext);
-  // const [stats, setStats] = useState({
-  //   users: 0,
-  //   lessons: 0,
-  //   vocabulary: 0,
-  //   tutorials: 0,
-  // });
+  const { user } = useContext(AuthContext);
+  const [stats, setStats] = useState({
+    lessons: 0,
+    vocabulary: 0,
+    tutorials: 0,
+  });
 
-  // useEffect(()=>{
-  //   fetch('/german_vocabulary.json')
-  //   .then(res => res.json())
-  //   then(data => setStats({...stats, vocabulary:data}))
-  // },[])
+  useEffect(() => {
+    fetch("/german_vocabulary.json")
+      .then((res) => res.json())
+      .then((data) => {
+
+        setStats({
+          vocabulary: data.length, 
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   return (
     <div>
@@ -31,7 +38,7 @@ export default function Success() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="bg-white shadow-lg rounded-lg p-6">
               <h3 className="text-4xl font-bold text-blue-600">
-                <CountUp end={10} duration={5} />
+                <CountUp end={10} duration={5}  suffix="+"/>
               </h3>
               <p className="text-gray-700 mt-2">Users</p>
             </div>
@@ -45,14 +52,14 @@ export default function Success() {
 
             <div className="bg-white shadow-lg rounded-lg p-6">
               <h3 className="text-4xl font-bold text-red-600">
-                <CountUp end={59} duration={3.5} suffix="+" />
+                <CountUp end={stats.vocabulary} duration={3.5} suffix="+" />
               </h3>
               <p className="text-gray-700 mt-2">Vocabulary Words</p>
             </div>
 
             <div className="bg-white shadow-lg rounded-lg p-6">
               <h3 className="text-4xl font-bold text-purple-600">
-                <CountUp end={8} duration={5} suffix="+" />
+                <CountUp end={10} duration={5} suffix="+" />
               </h3>
               <p className="text-gray-700 mt-2">Tutorials</p>
             </div>

@@ -1,36 +1,36 @@
-import { useContext } from "react"
-import { AuthContext } from "../../Provider/AuthProvider"
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";  
+import "react-toastify/dist/ReactToastify.css";  
 
 export default function ProfileUpdate() {
+  const navigate = useNavigate();
+  const { updateUserProfile, user, setUser } = useContext(AuthContext);
 
-    const navigate = useNavigate();
-    const {updateUserProfile, user, setUser} = useContext(AuthContext);
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = new FormData(e.target);
-        const name = form.get("name");
-        const imageUrl = form.get("imageUrl");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const imageUrl = form.get("imageUrl");
 
-        updateUserProfile({ displayName: name, photoURL: imageUrl })
-          .then((result) => {
-            setUser({...user, displayName: name, photoURL: imageUrl })
-            alert("Profile updated successfully");
-            navigate(-1)
-          })
-          .catch((error) => {
-            // console.log(error.message);
-            alert("Try again later");
-          });
-      };
+    updateUserProfile({ displayName: name, photoURL: imageUrl })
+      .then((result) => {
+        setUser({ ...user, displayName: name, photoURL: imageUrl });
+        toast.success("Profile updated successfully!");  
+        navigate(-1);  
+      })
+      .catch((error) => {
+        toast.error("Failed to update profile. Please try again later.");  
+      });
+  };
+
   return (
     <div className="flex justify-center items-center h-screen bg-blue-100 w-10/12 mx-auto">
       <div className="card bg-blue-50 w-full max-w-md shrink-0 shadow-2xl border border-blue-200 rounded-lg p-6">
         <form onSubmit={handleSubmit} className="card-body">
           <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-blue-800">
-              Update Your Profile
-            </h2>
+            <h2 className="text-3xl font-bold text-blue-800">Update Your Profile</h2>
           </div>
           <div className="form-control mb-4">
             <label className="label">
@@ -66,6 +66,9 @@ export default function ProfileUpdate() {
           </div>
         </form>
       </div>
+
+      
+      <ToastContainer position="top-right" autoClose={5000} />
     </div>
-  )
+  );
 }

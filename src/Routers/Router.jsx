@@ -14,6 +14,7 @@ import MyProfile from "../Components/MyProfile/MyProfile";
 import ProfileUpdate from "../Components/ProfileUpdate/ProfileUpdate";
 import ForgotPassword from "../Components/ForgotPassword/ForgotPassword";
 import Success from "../Components/Success/Success";
+import Statistics from "../Components/Statistics/Statistics";
 
 
 const router = createBrowserRouter([
@@ -72,8 +73,14 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
+      {
+        path:'/statistics',
+        element:<Statistics></Statistics>,
+        loader: () => fetch("/german_vocabulary.json"),
+      },
     ],
   },
+  
   {
     path: "/auth",
     element: <AuthLayout></AuthLayout>,

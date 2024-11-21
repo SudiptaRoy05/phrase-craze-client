@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Snowfall from "react-snowfall";
+import { ToastContainer } from "react-toastify";
 
 export default function Home() {
   return (
@@ -15,9 +16,11 @@ export default function Home() {
         <Outlet></Outlet>
       </main>
 
+
       <footer className="bg-blue-900 text-white text-center py-4">
         <Footer></Footer>
       </footer>
+      <ToastContainer />
     </div>
   );
 }

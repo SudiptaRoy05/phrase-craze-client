@@ -39,6 +39,14 @@ export default function Navbar() {
         Tutorials
       </NavLink>
       <NavLink
+        to="/statistics"
+        className={({ isActive }) =>
+          isActive ? "underline font-semibold text-blue-800" : "text-blue-600"
+        }
+      >
+        Statistics
+      </NavLink>
+      <NavLink
         to="/myprofile"
         className={({ isActive }) =>
           isActive ? "underline font-semibold text-blue-800" : "text-blue-600"

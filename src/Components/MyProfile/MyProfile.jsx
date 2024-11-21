@@ -10,9 +10,8 @@ export default function MyProfile() {
       <div className="card bg-white shadow-lg border border-blue-200 rounded-lg p-10 w-full max-w-2xl">
         {user ? (
           <>
-            {/* Profile Section */}
+            
             <div className="text-center mb-8">
-              {/* Display Profile Image */}
               <div className="w-36 h-36 rounded-full overflow-hidden mx-auto mb-6">
                 <img
                   src={user.photoURL || "https://via.placeholder.com/150"}
@@ -20,15 +19,11 @@ export default function MyProfile() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Welcome message with user's name */}
               <h2 className="text-4xl font-semibold text-blue-800">
                 Welcome, {user.displayName || "Anonymous User"}!
               </h2>
-              {/* Display Email */}
               <p className="text-blue-600 text-xl mb-6">{user.email}</p>
             </div>
-
-            {/* Profile Information */}
             <div className="mb-6">
               <p className="text-blue-600 font-semibold text-xl">
                 Profile Information:

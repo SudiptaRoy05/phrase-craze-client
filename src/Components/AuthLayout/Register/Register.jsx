@@ -2,9 +2,12 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
-  const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const { createNewUser, setUser, updateUserProfile, loginWithGoogle } =
+    useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
@@ -31,17 +34,32 @@ export default function Register() {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        alert("User created successfully!");
+        toast.success("User created successfully!");
         updateUserProfile({ displayName: name, photoURL: imageUrl })
           .then((result) => {
             navigate("/");
           })
           .catch((error) => {
-            console.log(error.message);
+            // Handle error
           });
       })
       .catch((error) => {
         setError({ ...error, form: error.message });
+        toast.error(error.message);
+      });
+  };
+
+  const handleSocialLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        toast.success("User logged in with Google!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        setError({ ...error, login: error.message });
+        toast.error("Error during Google login: " + error.message);
       });
   };
 
@@ -135,8 +153,9 @@ export default function Register() {
             <button
               className="btn bg-white hover:bg-gray-100 border border-gray-300 flex items-center justify-center rounded-lg w-full py-3"
               type="button"
+              onClick={handleSocialLogin}
             >
-              <FcGoogle className="text-2xl mr-2" /> {/* Google icon */}
+              <FcGoogle className="text-2xl mr-2" />
               <span className="text-gray-700 font-medium">
                 Continue with Google
               </span>
@@ -144,6 +163,8 @@ export default function Register() {
           </div>
         </form>
       </div>
+
+      
     </div>
   );
 }

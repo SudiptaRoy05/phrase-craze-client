@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import { toast,ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 
 export default function Login() {
   const { loginUser, setUser,loginWithGoogle } = useContext(AuthContext);
@@ -20,6 +22,7 @@ export default function Login() {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success("User Login successfully!"); 
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
@@ -109,7 +112,7 @@ export default function Login() {
               type="button"
               onClick={handleSocialLogin}
             >
-              <FcGoogle className="text-2xl mr-2" /> {/* Google icon */}
+              <FcGoogle className="text-2xl mr-2" />
               <span className="text-gray-700 font-medium">
                 Continue with Google
               </span>
@@ -117,6 +120,8 @@ export default function Login() {
           </div>
         </form>
       </div>
+
+      
     </div>
   );
 }

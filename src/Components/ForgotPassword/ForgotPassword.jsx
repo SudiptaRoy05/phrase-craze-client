@@ -15,7 +15,7 @@ export default function ForgotPassword() {
         navigate(-1)
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
   return (
