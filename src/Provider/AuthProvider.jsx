@@ -31,6 +31,7 @@ export default function AuthProvider({ children }) {
   };
 
   const updateUserProfile = (updatedData) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, updatedData);
   };
 
