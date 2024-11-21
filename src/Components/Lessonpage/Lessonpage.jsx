@@ -5,13 +5,9 @@ export default function Lessonpage() {
     const { lesson_on } = useParams(); 
     const data = useLoaderData(); 
     
-    
-    console.log("Lesson No:", lesson_on); // Log lesson_no from URL
-    console.log("Loaded Data:", data); // Log the fetched data
-    
   
     const filterData = data.filter(item => item.lesson_no === Number(lesson_on));
-    console.log("Filtered Data:", filterData); 
+    // console.log("Filtered Data:", filterData); 
 
     return (
         <div className="grid lg:grid-cols-4 md:grid-cols-2 w-10/12 lg:w-11/12 lg:pl-8 mx-auto"> 

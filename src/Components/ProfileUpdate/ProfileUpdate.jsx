@@ -19,7 +19,7 @@ export default function ProfileUpdate() {
             navigate(-1)
           })
           .catch((error) => {
-            console.log(error.message);
+            // console.log(error.message);
             alert("Try again later");
           });
       };
