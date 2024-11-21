@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import CountUp from "react-countup";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { Outlet } from "react-router-dom";
+// import { AuthContext } from "../../Provider/AuthProvider";
 
 export default function Success() {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const [stats, setStats] = useState({
     lessons: 0,
     vocabulary: 0,
@@ -66,6 +67,9 @@ export default function Success() {
           </div>
         </div>
       </section>
+      <div>
+        <Outlet></Outlet>
+      </div>
     </div>
   );
 }

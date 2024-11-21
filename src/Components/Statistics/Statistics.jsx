@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
@@ -21,23 +22,25 @@ export default function Statistics() {
 
   return (
     <div className="w-10/12 mx-auto px-4 py-12">
+      <Helmet>
+        <title>Statistics</title>
+      </Helmet>
+
       <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
         Parts of Speech Statistics
       </h2>
 
-      {/* Conditional Rendering for the Pie Chart */}
       {partsOfSpeechCounts.length > 0 ? (
         <div className="flex justify-center mb-8">
           <PieChart width={500} height={500}>
             <Pie
               data={partsOfSpeechCounts}
               dataKey="value"
-              nameKey="name" 
-              outerRadius={150} 
-              fill="#8884d8" 
-              label 
+              nameKey="name"
+              outerRadius={150}
+              fill="#8884d8"
+              label
             >
-              
               {partsOfSpeechCounts.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
@@ -45,15 +48,14 @@ export default function Statistics() {
                 />
               ))}
             </Pie>
-            <Tooltip /> 
-            <Legend /> 
+            <Tooltip />
+            <Legend />
           </PieChart>
         </div>
       ) : (
-        <p className="text-center text-gray-500">Loading chart...</p> 
+        <p className="text-center text-gray-500">Loading chart...</p>
       )}
 
-      {/* Part of Speech Count Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {partsOfSpeechCounts.map((item, index) => (
           <div

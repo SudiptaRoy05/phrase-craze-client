@@ -1,16 +1,29 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function MyProfile() {
   const { user, updateUserProfile } = useContext(AuthContext);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-t from-blue-100 via-sky-200 to-blue-300">
+      <Helmet>
+        <title>My Profile</title>
+      </Helmet>
       <div className="card bg-white shadow-lg border border-blue-200 rounded-lg p-10 w-full max-w-2xl">
         {user ? (
           <>
-            
+            <div className="text-center mb-8">
+              <h1 className="text-5xl font-bold text-blue-800 mb-4">
+                Welcome, {user.displayName || "Anonymous User"}!
+              </h1>
+              <p className="text-blue-600 text-xl">
+                We're glad to have you here. You can edit your profile or
+                explore your lessons.
+              </p>
+            </div>
+
             <div className="text-center mb-8">
               <div className="w-36 h-36 rounded-full overflow-hidden mx-auto mb-6">
                 <img
@@ -24,6 +37,7 @@ export default function MyProfile() {
               </h2>
               <p className="text-blue-600 text-xl mb-6">{user.email}</p>
             </div>
+
             <div className="mb-6">
               <p className="text-blue-600 font-semibold text-xl">
                 Profile Information:
@@ -44,11 +58,10 @@ export default function MyProfile() {
               </ul>
             </div>
 
-            
             <div className="form-control">
               <Link
                 to="updateprofile"
-                className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg w-full  text-lg"
+                className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg w-full text-lg"
               >
                 Edit Profile
               </Link>
@@ -63,7 +76,7 @@ export default function MyProfile() {
               Please log in to view your profile.
             </p>
             <Link to="/auth/login">
-              <button className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg  transition-all duration-200 text-lg">
+              <button className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-all duration-200 text-lg">
                 Go to Login
               </button>
             </Link>

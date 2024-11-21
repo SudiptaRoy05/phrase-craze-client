@@ -15,7 +15,8 @@ import ProfileUpdate from "../Components/ProfileUpdate/ProfileUpdate";
 import ForgotPassword from "../Components/ForgotPassword/ForgotPassword";
 import Success from "../Components/Success/Success";
 import Statistics from "../Components/Statistics/Statistics";
-
+import Testimonials from "../Components/Testimonials/Testimonials";
+import Partners from "../Components/Partners/Partners";
 
 const router = createBrowserRouter([
   {
@@ -30,12 +31,24 @@ const router = createBrowserRouter([
           {
             path: "/",
             element: <AboutUs></AboutUs>,
-            children:[
+            children: [
               {
-                path:"/",
-                element:<Success></Success>
-              }
-            ]
+                path: "/",
+                element: <Success></Success>,
+                children:[
+                  {
+                    path:'/',
+                    element:<Testimonials></Testimonials>,
+                    children:[
+                      {
+                        path:'/',
+                        element:<Partners></Partners>
+                      }
+                    ]
+                  }
+                ]
+              },
+            ],
           },
         ],
       },
@@ -52,8 +65,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:'/myprofile/updateprofile',
-        element:<ProfileUpdate></ProfileUpdate>,
+        path: "/myprofile/updateprofile",
+        element: <ProfileUpdate></ProfileUpdate>,
       },
 
       {
@@ -74,13 +87,17 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:'/statistics',
-        element:<Statistics></Statistics>,
+        path: "/statistics",
+        element: (
+          <PrivateRoutes>
+            <Statistics></Statistics>
+          </PrivateRoutes>
+        ),
         loader: () => fetch("/german_vocabulary.json"),
       },
     ],
   },
-  
+
   {
     path: "/auth",
     element: <AuthLayout></AuthLayout>,
@@ -94,9 +111,9 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path:"/auth/forgotpassword",
-        element:<ForgotPassword></ForgotPassword>
-      }
+        path: "/auth/forgotpassword",
+        element: <ForgotPassword></ForgotPassword>,
+      },
     ],
   },
 ]);

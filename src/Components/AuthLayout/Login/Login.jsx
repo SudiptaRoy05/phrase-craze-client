@@ -4,6 +4,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
+import { Helmet } from "react-helmet";
 
 export default function Login() {
   const { loginUser, setUser,loginWithGoogle } = useContext(AuthContext);
@@ -45,6 +46,10 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-blue-100">
+       <Helmet>
+        <title>Login</title>
+      </Helmet>
+      
       <div className="card bg-blue-50 w-full max-w-md shrink-0 shadow-2xl border border-blue-200 rounded-lg p-6">
         <form onSubmit={handleLogin} className="card-body">
           <div className="text-center mb-6">

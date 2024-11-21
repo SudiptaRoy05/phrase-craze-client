@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 export default function Tutorials() {
@@ -18,12 +19,14 @@ export default function Tutorials() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 py-10">
-      {/* Page Title */}
+      <Helmet>
+        <title>Tutorials</title>
+      </Helmet>
+
       <h1 className="text-4xl font-extrabold text-center text-blue-700 mb-10">
         Explore Our Tutorials
       </h1>
 
-      {/* Video Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 lg:px-20">
         {videos.map((video, index) => (
           <div

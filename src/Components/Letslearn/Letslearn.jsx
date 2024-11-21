@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Letslearn() {
@@ -5,13 +6,17 @@ export default function Letslearn() {
 
   return (
     <div className="w-10/12 mx-auto bg-gradient-to-b from-blue-100 to-white flex flex-col my-6">
-      {/* Header Section */}
+      
+      <Helmet>
+        <title>Lets Learn</title>
+      </Helmet>
+
       <div className="bg-blue-500 text-white py-10 text-center rounded-lg shadow-md mb-8">
         <h1 className="text-5xl font-extrabold mb-4">❄️ Learn Vocabulary by Lessons ❄️</h1>
         <p className="text-xl mt-2">Warm up with new words this winter!</p>
       </div>
 
-      {/* Learning Lessons Section */}
+ 
       <div className="container mx-auto py-10 px-4">
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">
           Start Learning
@@ -30,7 +35,6 @@ export default function Letslearn() {
         </div>
       </div>
 
-      {/* Alphabet Learning Section */}
       <div className="bg-blue-100 py-10 mt-10 rounded-lg shadow-md">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">
