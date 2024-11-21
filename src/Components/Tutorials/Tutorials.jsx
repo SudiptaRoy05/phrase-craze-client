@@ -50,7 +50,7 @@ export default function Tutorials() {
       {/* Navigation Button */}
       <div className="mt-10 text-center">
         <button
-          onClick={() => navigate("/start-lesson")}
+          onClick={() => navigate(-1)}
           className="bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800 px-6 py-3 rounded-lg text-lg font-medium shadow-md hover:shadow-lg transition-all"
         >
           Learn Vocabularies

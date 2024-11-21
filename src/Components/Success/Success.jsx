@@ -1,7 +1,22 @@
-
+// import { useContext, useEffect } from "react";
 import CountUp from "react-countup";
+// import { AuthContext } from "../../Provider/AuthProvider";
 
 export default function Success() {
+  // const {user} = useContext(AuthContext);
+  // const [stats, setStats] = useState({
+  //   users: 0,
+  //   lessons: 0,
+  //   vocabulary: 0,
+  //   tutorials: 0,
+  // });
+
+  // useEffect(()=>{
+  //   fetch('/german_vocabulary.json')
+  //   .then(res => res.json())
+  //   then(data => setStats({...stats, vocabulary:data}))
+  // },[])
+
   return (
     <div>
       <section className="bg-gray-100 py-12">
@@ -14,7 +29,6 @@ export default function Success() {
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            
             <div className="bg-white shadow-lg rounded-lg p-6">
               <h3 className="text-4xl font-bold text-blue-600">
                 <CountUp end={10} duration={5} />
@@ -22,7 +36,6 @@ export default function Success() {
               <p className="text-gray-700 mt-2">Users</p>
             </div>
 
-            
             <div className="bg-white shadow-lg rounded-lg p-6">
               <h3 className="text-4xl font-bold text-green-600">
                 <CountUp end={10} duration={6} suffix="+" />
@@ -30,7 +43,6 @@ export default function Success() {
               <p className="text-gray-700 mt-2">Lessons</p>
             </div>
 
-            
             <div className="bg-white shadow-lg rounded-lg p-6">
               <h3 className="text-4xl font-bold text-red-600">
                 <CountUp end={59} duration={3.5} suffix="+" />
@@ -38,7 +50,6 @@ export default function Success() {
               <p className="text-gray-700 mt-2">Vocabulary Words</p>
             </div>
 
-            {/* Tutorial Count */}
             <div className="bg-white shadow-lg rounded-lg p-6">
               <h3 className="text-4xl font-bold text-purple-600">
                 <CountUp end={8} duration={5} suffix="+" />
