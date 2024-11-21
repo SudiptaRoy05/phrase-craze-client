@@ -8,7 +8,7 @@ export default function Banner() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-10/12 mx-auto my-6">
+    <div className="md:w-10/12 mx-auto my-6">
       <div className="carousel h-[600px] w-full">
         {/* Slide 1 */}
         <div id="slide1" className="carousel-item relative w-full">

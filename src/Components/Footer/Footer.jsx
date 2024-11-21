@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container mx-auto text-center">
         <h2 className="text-2xl font-semibold mb-4">Stay Connected</h2>
 
-        <div className="flex justify-center space-x-6 mb-4">
+        <div className="flex justify-center space-x-6  mb-4">
           <a
             href="https://www.facebook.com"
             target="_blank"
@@ -50,7 +50,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="flex justify-center space-x-8 mb-4">
+        <div className="flex justify-center space-x-8 mb-4 max-sm:w-11/12 mx-auto">
           <Link
             to="/about-us"
             className="text-white text-lg hover:text-blue-400 transition-all duration-300"

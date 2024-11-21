@@ -22,10 +22,10 @@ export default function AboutUs() {
           </p>
         </div>
         <div className="mt-6 flex justify-center">
-          <img
+          <img 
             src={image}
             alt="Snowy theme"
-            className="rounded-lg shadow-lg h-[500px]"
+            className="max-sm:h-60 rounded-lg shadow-lg h-[500px]"
           />
         </div>
       </section>
