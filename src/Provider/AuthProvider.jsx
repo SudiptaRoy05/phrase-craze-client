@@ -31,7 +31,7 @@ export default function AuthProvider({ children }) {
   };
 
   const updateUserProfile = (updatedData) => {
-    setLoading(true);
+    // setLoading(true);
     return updateProfile(auth.currentUser, updatedData);
   };
 
@@ -60,6 +60,7 @@ export default function AuthProvider({ children }) {
     updateUserProfile,
     handleForgotPassword,
     loginWithGoogle,
+    auth,
   };
 
   useEffect(() => {

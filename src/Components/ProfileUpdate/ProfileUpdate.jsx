@@ -5,15 +5,16 @@ import { useNavigate } from "react-router-dom";
 export default function ProfileUpdate() {
 
     const navigate = useNavigate();
-    const {updateUserProfile} = useContext(AuthContext);
+    const {updateUserProfile, user, setUser} = useContext(AuthContext);
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
-    
         const name = form.get("name");
         const imageUrl = form.get("imageUrl");
+
         updateUserProfile({ displayName: name, photoURL: imageUrl })
           .then((result) => {
+            setUser({...user, displayName: name, photoURL: imageUrl })
             alert("Profile updated successfully");
             navigate(-1)
           })
