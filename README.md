@@ -1,65 +1,111 @@
-PhraseCraze: A Fun Vocabulary Learning App
+# PhraseCraze: A Fun Vocabulary Learning App
 
-Live Link: https://phrase-craze.web.app
-GitHub Repo: https://github.com/programming-hero-web-course1/b10-a9-authentication-SudiptaRoy05
+## Live Link 🌐
+[Explore PhraseCraze](https://phrase-craze.web.app)
 
-What is PhraseCraze?
+## GitHub Repository 📂
+[GitHub Repo](https://github.com/SudiptaRoy05/phrase-craze-client.git)
 
-PhraseCraze is a language-learning app that helps you build vocabulary in a fun and easy way. Choose a language (other than Bengali or English) and start learning with interactive lessons and examples.
+## What is PhraseCraze? 🤔
+PhraseCraze is a language-learning app that helps you build vocabulary in a fun and interactive way. Choose a language (other than Bengali or English) and start learning with engaging lessons and examples.
 
-Features::
+## Features 🚀
+- **Learn Vocabulary**: Explore words with meanings, pronunciations, and real-world examples.
+- **User Login**: Secure authentication using Firebase (Email/Password or Google).
+- **Personalized Experience**: View and update your profile details (name and photo).
+- **Private Pages**: Access lessons and tutorials only after logging in.
+- **Lesson Cards**: Learn through 10 structured and easy-to-navigate lessons.
+- **Interactive Tutorials**: Watch videos to understand the language better.
+- **Dynamic Stats**: Animated success counters for users, lessons, and vocabularies.
+- **Responsive Design**: Optimized for mobile, tablet, and desktop.
 
-Learn Vocabulary: Explore words with meanings, pronunciations, and examples.
+## How to Use 📝
+### Home Page:
+- See a welcome message if logged in.
+- Learn about PhraseCraze in the **About** section.
+- View fun stats in the **Success** section.
 
-User Login: Secure login with Firebase (Email/Password or Google).
+### Start Learning:
+- Pick a lesson and explore vocabulary.
+- Watch tutorial videos and learn more.
 
-Personalized Experience: See your profile and update your details (name and photo).
+### Lessons:
+- See words categorized by difficulty.
+- Open "when to say" modals for real-life examples.
 
-Private Pages: Access lessons and tutorials only after logging in.
+### Profile:
+- View and update your profile details.
 
-Lesson Cards: Learn through 10 easy-to-navigate lessons.
+### Login & Register:
+- Sign in using Email/Password or Google.
+- Reset password if needed.
 
-Interactive Tutorials: Watch videos to understand the language better.
+## Key Numbers 📊
+- **Users**: 15+
+- **Lessons**: 10
+- **Words**: 59+
+- **Tutorials**: 8
 
-Dynamic Stats: Animated success counts for users, lessons, and vocabularies.
+## Technologies Used 🛠️
+- **Frontend**: React.js, Tailwind CSS, DaisyUI
+- **Backend**: Firebase
+- **Animations**: AOS Animations, React Count-Up
+- **State Management & Sorting**: LocalForage, Match Sorter
+- **Data Visualization**: Recharts
+- **UI Enhancements**: React Toastify, React Snowfall
 
-Responsive Design: Works great on mobile, tablet, and desktop.
+## Dependencies 📦
+- aos
+- firebase
+- localforage
+- match-sorter
+- react
+- react-countup
+- react-dom
+- react-helmet
+- react-icons
+- react-router-dom
+- react-snowfall
+- react-toastify
+- recharts
+- sort-by
 
-How to Use
-Home Page:
+## Firebase Configuration 🔑
+```js
+const firebaseConfig = {
+  apiKey: "Your_API_KEY",
+  authDomain: "Your_AUTH_DOMAIN",
+  projectId: "Your_PROJECT_ID",
+  storageBucket: "Your_STORAGE_BUCKET",
+  messagingSenderId: "Your_MESSAGING_SENDER_ID",
+  appId: "Your_APP_ID",
+};
+```
 
-See a welcome message if logged in.
-Learn about PhraseCraze in the About section.
-View fun stats in the Success section.
+## Installation Guide 🛠️
+### Prerequisites
+Ensure you have the following installed:
+- Node.js (>=16.0)
+- npm or yarn
 
-Start Learning:
+### Steps to Run Locally
+1. **Clone the Repository**
+   ```sh
+   https://github.com/SudiptaRoy05/phrase-craze-client.git
+   cd phrase-craze-client
+   ```
+2. **Install Dependencies**
+   ```sh
+   npm install
+   ```
 
-Pick a lesson to explore vocabulary.
-Watch tutorial videos and learn more.
-Lessons:
+4. **Run the Project**
+   ```sh
+   npm run dev
+   ```
+5. **Access the Application**
+   Open `http://localhost:5173` in your browser.
 
-See words categorized by difficulty.
-Open "when to say" modals for detailed examples.
-Profile:
+## Contribution 🤝
+If you’d like to contribute, please fork the repository and submit a pull request with your improvements.
 
-View and update your profile details.
-Login & Register:
-
-Sign in using email/password or Google.
-Reset your password if needed.
-Key Numbers
-Users: 15+
-Lessons: 10
-Words: 59+
-Tutorials: 8
-
-
-Technologies Used
-
-1.React
-2.Firebase
-3.Tailwind CSS
-4.DaisyUi
-5.AOS Animations
-6.React Count-Up
-and more..
